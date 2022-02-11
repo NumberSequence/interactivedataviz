@@ -17,3 +17,19 @@ h3 {
 p {
   font-size: 1em;
 }
+
+.weekend {
+  font-family: cursive;
+}
+
+.day {
+  text-decoration:underline; font-variant:small-caps;
+}
+
+.rowlabel{
+  font-weight:bold;
+}
+
+table{
+  border-spacing: 20px;
+}

@@ -8,17 +8,21 @@
   <body>
     <h1>Hello World!</h1>
     <h3>Tutorial Assignment: 1_2_basic_html </h3>
-    <table class="Weekly">
-      <tr>
+    <img src="https://i.giphy.com/media/3oqnXWXKeJpUberdA7/giphy.webp" 
+    alt="Sleeping Gif"
+    class="main image"
+    width="150px" height="150px">
+    <table>
+      <tr class="rowlabel">
         <td>Day of week</td>
-        <td>Planned method of wakeup</td>
-        <td>Actual method of wakeup</td>
+        <td>Planned wakeup</td>
+        <td>Actual wakeup</td>
         <td>Late/Early/On-time wakeup</td>
         <td>Energy Level</td>
         <td>Caffeine before noon?</td>
       </tr>
-      <tr>
-        <td>Sunday</td>
+      <tr class="weekend">
+        <td class="day">Sunday</td>
         <td>Natural</td>
         <td>Natural</td>
         <td>Early</td>
@@ -26,7 +30,7 @@
         <td>No</td>
       </tr>
       <tr>
-        <td>Monday</td>
+        <td class="day">Monday</td>
         <td>Alarm</td>
         <td>Natural</td>
         <td>Early</td>
@@ -34,7 +38,7 @@
         <td>Yes</td>
       </tr>
       <tr>
-        <td>Tuesday</td>
+        <td class="day">Tuesday</td>
         <td>Alarm</td>
         <td>Alarm</td>
         <td>On-time</td>
@@ -42,7 +46,7 @@
         <td>No</td>
       </tr>
       <tr>
-        <td>Wednesday</td>
+        <td class="day">Wednesday</td>
         <td>Alarm</td>
         <td>Alarm</td>
         <td>On-time</td>
@@ -50,7 +54,7 @@
         <td>Yes</td>
       </tr>
       <tr>
-        <td>Thursday</td>
+        <td class="day">Thursday</td>
         <td>Alarm</td>
         <td>Natural</td>
         <td>Early</td>
@@ -58,15 +62,15 @@
         <td>Yes</td>
       </tr>
       <tr>
-        <td>Friday</td>
+        <td class="day">Friday</td>
         <td>Alarm</td>
         <td>Natural</td>
         <td>Late</td>
         <td>Low</td>
         <td>Yes</td>
       </tr>
-      <tr>
-        <td>Saturday</td>
+      <tr class="weekend">
+        <td class="day">Saturday</td>
         <td>Natural</td>
         <td>Natural</td>
         <td>Late</td>
@@ -74,8 +78,40 @@
         <td>No</td>
       </tr>
     </table>
-    <svg>
-      <!-- Add your rectangles in here -->
+    
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" width=".5" height="15"></rect>    
+      <rect x="4" width="2.5" height="8"></rect>    
+      <rect x="5" width=".5" height="15"></rect>   
+      <rect x="9" width="2.5" height="8"></rect>   
+      <rect x="10" width=".5" height="15"></rect>  
+      <rect x="15" width=".5" height="15"></rect>  
+      <rect x="20" width=".5" height="15"></rect>
+      <rect x="19" width="2.5" height="8"></rect>
+      <rect x="25" width=".5" height="15"></rect>
+      <rect x="24" width="2.5" height="8"></rect>
+      <rect x="30" width=".5" height="15"></rect>
+      <rect x="29" width="2.5" height="8"></rect>
+      <rect x="35" width=".5" height="15"></rect>
+      <rect x="40" width=".5" height="15"></rect>
+      <rect x="39" width="2.5" height="8"></rect>
+      <rect x="45" width=".5" height="15"></rect>
+      <rect x="44" width="2.5" height="8"></rect>
+      <rect x="50" width=".5" height="15"></rect>
+      <rect x="54" width="2.5" height="8"></rect>
+      <rect x="55" width=".5" height="15"></rect>
+      <rect x="60" width=".5" height="15"></rect>
+      <rect x="59" width="1.5" height="8"></rect>
+      <rect x="0" width="60" height="1"></rect>
+      <rect x="0" y="15" width="60.5" height="1"></rect>
+      <circle cx="2.75" cy="12" r="1.5" fill="blue"></circle>
+      <circle cx="12.75" cy="12" r="1.5" fill="blue"></circle>
+      <circle cx="22.75" cy="12" r="1.5" fill="blue"></circle>
+      <circle cx="37.75" cy="12" r="1.5" fill="red"></circle>
+      <circle cx="47.75" cy="12" r="1.5" fill="red"></circle>
+      <circle cx="57.75" cy="12" r="1.5" fill="red"></circle>
     </svg>
+      
+      
   </body>
 </html>
