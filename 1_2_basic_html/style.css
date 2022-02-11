@@ -2,6 +2,7 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
   padding: 1em;
+  background-color: white;
 }
 
 h1 {
@@ -32,4 +33,12 @@ p {
 
 table{
   border-spacing: 20px;
+}
+
+.lightswitch:hover ~ .switchable  {
+   background-color: black;
+}
+
+.lightswitch:hover ~ .greeting   {
+  color: white;
 }
