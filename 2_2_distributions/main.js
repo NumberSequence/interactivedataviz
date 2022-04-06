@@ -48,8 +48,10 @@ d3.json("../data/RandProdData.json", d3.autoType)
       .call(xAxis)
 
     svg.append("g")
-    .attr("transform",`translate(0,${margin})`)
+    .attr("transform",`translate(${margin.left},0)`)
+    //.attr("transform", `translate(${margin.left}, width - margin.bottom)`)
     .call(yAxis)
+    
       // create circles via SELECT-DATA-JOIN
 
       svg.selectAll("circle")
