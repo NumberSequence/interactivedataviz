@@ -38,9 +38,18 @@
 
  <!-- Project -->
  <h2>NYC Shooting Incidents</h2>
+ <!-- 
+ <button id="MassButton" onclick="ToggleMass(MassOnly)">Mass Shooting Only</button>
+ <button id="MurderButton" onclick="ToggleMurder(MurderOnly)">Murders Only</button>
+ -->
 
- <button id="MassButton" onclick="ToggleMass(MassOnly)">Mass Shooting</button>
- <button id="MurderButton" onclick="ToggleMurder(MurderOnly)">Murder Shooting</button>
+ <div>Mass Shooting Only<label class="switch"><input type="checkbox"><span class="slider round" onclick="ToggleMass(MassOnly)" id="MassButton"></span></label></div>
+<br>
+<div>Murder Shooting Only<label class="switch"><input type="checkbox"><span class="slider round"  onclick="ToggleMurder(MurderOnly)" id="MurderButton"></span></label></div>
+ <!-- 
+ <button id="xMassButton" onclick="ToggleMass(MassOnly)">Mass Shooting Only</button>
+ <button id="xMurderButton" onclick="ToggleMurder(MurderOnly)">Murders Only</button>
+ -->
 
   <!-- use a HTML div tag to layout the map - maps should always be placed in div containers for control -->
   <!-- check the style.css file to see the other necessary component to render leaflet maps -->
@@ -51,5 +60,13 @@
   <script type="text/javascript" src="main.js"></script>
   <script type="text/javascript" src="../lib/d3.js"  charset="utf-8"></script>
   <script src="../lib/leaflet.ajax.min.js"></script>
+  <!-- 
+    <script type="application/javascript" src="//cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  <script type="application/javascript" src="//ismyrnow.github.io/Leaflet.groupedlayercontrol/src/leaflet.groupedlayercontrol.js"></script>
+  <script type="application/javascript" src="//ismyrnow.github.io/Leaflet.groupedlayercontrol/example/exampledata.js"></script>
+
+   -->
+   
+  
 </body>
 </html>
