@@ -2,16 +2,16 @@
 // Prospect Park 40.662857, -73.969917
 const myMap = L.map('map', {
   center: [40.662857, -73.969917],
-  zoom: 13
+  zoom: 11
 });
 
 let MassOnly = false;
 let MurderOnly = false;
 
-let overlay1;
-let overlay2;
-let overlay3;
-let overlay4;
+let SOL;
+let MOL;
+let MSOL;
+let MMOL;
 
 
 /* var MassButton = document.getElementById("MassButton");
@@ -47,7 +47,7 @@ position: "topright",
 collapsed: false,
 }).addTo(myMap);
 //CONTROL HIDDEN
- $('.leaflet-control-layers').hide();
+// $('.leaflet-control-layers').hide();
 
 
 
@@ -63,10 +63,10 @@ attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <
 function createCircleMarker( feature, latlng ){
   
   let options = {
-    radius: 3,
+    radius: 1.5,
     fillColor: "blue",
     color: "white",
-    weight: 1,
+    weight: .3,
     opacity: 1,
     fillOpacity: 0.2
   }
@@ -76,15 +76,41 @@ function createCircleMarker( feature, latlng ){
 function createCircleMarkerMass( feature, latlng ){
 
 let options = {
-  radius: 4,
-  fillColor: "orange",
+  radius: 2.5,
+  fillColor: "yellow",
   color: "white",
-  weight: 1,
+  weight: .3,
   opacity: 1,
   fillOpacity: 0.5
 }
 return L.circleMarker( latlng, options );
 }
+
+function createCircleMarkerMurder( feature, latlng ){
+
+  let options = {
+    radius: 2.5,
+    fillColor: "orange",
+    color: "deeppink",
+    weight: .3,
+    opacity: 1,
+    fillOpacity: 0.5
+  }
+  return L.circleMarker( latlng, options );
+  }
+
+  function createCircleMarkerMM( feature, latlng ){
+
+    let options = {
+      radius: 2.5,
+      fillColor: "orangered",
+      color: "deeppink",
+      weight: .3,
+      opacity: 1,
+      fillOpacity: 0.5
+    }
+    return L.circleMarker( latlng, options );
+    }
 
 
 
@@ -105,7 +131,7 @@ controlLayers.addOverlay(SOL, "All Shootings");
 //MURD
 const ShootingM = $.getJSON("ShootingM.geojson", function(data){
  MOL = L.geoJson(data, {
-    pointToLayer: createCircleMarkerMass, 
+    pointToLayer: createCircleMarkerMurder, 
     onEachFeature: function (feature, layer) {
         layer.bindPopup("Date: " + feature.properties.OCCUR_DATE + "<br>" + "Time: "+feature.properties.OCCUR_TIME+ "<br>" + "Victims: "+feature.properties.Victims);
       }
@@ -129,7 +155,7 @@ const MassShooting = $.getJSON("ShootingMass.geojson", function(data){
  // MASSM
 const MassShootingM = $.getJSON("ShootingMassM.geojson", function(data){
    MMOL = L.geoJson(data, {
-      pointToLayer: createCircleMarkerMass, 
+      pointToLayer: createCircleMarkerMM, 
       onEachFeature: function (feature, layer) {
           layer.bindPopup("Date: " + feature.properties.OCCUR_DATE + "<br>" + "Time: "+feature.properties.OCCUR_TIME+ "<br>" + "Victims: "+feature.properties.Victims);
         }
@@ -139,140 +165,61 @@ const MassShootingM = $.getJSON("ShootingMassM.geojson", function(data){
   });
 
 //TOGGLE LAYERS
-
+/* 
 function ToggleMass () {
   MassOnly = !MassOnly;
  // alert(MassOnly);
-  if(MassOnly) {
-myMap.removeLayer(SOL);
-myMap.removeLayer(MOL);
-}
-else {
-myMap.addLayer(MOL);
-myMap.addLayer(SOL)};
+  if(MassOnly && MurderOnly) {
+    myMap.removeLayer(SOL);
+    myMap.removeLayer(MOL);
+    myMap.removeLayer(MSOL);
+    if(!MurderOnly) {
+      myMap.removeLayer(MOL);
+    };
+  }
+else if(MurderOnly) {
+  myMap.addLayer(MOL);}
+  else {
+    myMap.addLayer(MOL);
+    myMap.addLayer(SOL)
+  };
+}; */
  // alert(MassOnly);
 //  alert(MurderOnly);
-};
-
 
 function ToggleMurder () {
   MurderOnly = !MurderOnly;
-  if(MurderOnly) {
+  ToggleLayer();
+};
+
+function ToggleMass () {
+  MassOnly = !MassOnly;
+  ToggleLayer();
+};
+
+function ToggleLayer () {
+//  MurderOnly = !MurderOnly;
+  if(MurderOnly && MassOnly)  {
     myMap.removeLayer(SOL);
+    myMap.removeLayer(MOL);
     myMap.removeLayer(MSOL);
-  }
+    }
+  else if (MurderOnly && !MassOnly) {
+          myMap.addLayer(MOL);
+          myMap.removeLayer(SOL);
+          myMap.removeLayer(MSOL);
+          }
+  else if(!MurderOnly && MassOnly) {
+          myMap.addLayer(MSOL);
+          myMap.removeLayer(SOL);
+          myMap.removeLayer(MOL);
+          }
     else {
     myMap.addLayer(SOL);
+    myMap.addLayer(MOL);
     myMap.addLayer(MSOL);
+    };
   };
 //  alert(MassOnly);
 //  alert(MurderOnly);
-};
 
-/////
-//TRYING SOMETHING NEW
-/////
-/* 
-L.Control.GroupedLayers.include({
-  addOverlays: function () {
-      for (var i in this._layers) {
-          if (this._layers[i].overlay) {
-              if (!this._map.hasLayer(this._layers[i].layer)) {
-                  this._map.addLayer(this._layers[i].layer);
-              }
-          }
-      }
-  },
-  removeOverlays: function () {
-      for (var i in this._layers) {
-          if (this._layers[i].overlay) {
-              if (this._map.hasLayer(this._layers[i].layer)) {
-                  this._map.removeLayer(this._layers[i].layer);
-              }
-          }
-      }
-  }
-});
-
-var control = new L.Control.GroupedLayers(ExampleData.Basemaps, {
-  'Landmarks': {
-      'Cities': ExampleData.LayerGroups.cities,
-      'Restaurants': ExampleData.LayerGroups.restaurants
-  },
-  'Random': {
-      'Dogs': ExampleData.LayerGroups.dogs,
-      'Cats': ExampleData.LayerGroups.cats
-  }
-}).addTo(map);
-
-L.DomEvent.addListener(L.DomUtil.get('MassButton'), 'click', function () {
-  control.addOverlays();
-});
-
-L.DomEvent.addListener(L.DomUtil.get('MurderButton'), 'click', function () {
-  control.removeOverlays();
-}); 
-*/
-
-
-
-
-/*
-$(document).ready(function () {
-
-  var newParent = document.getElementById('custom-map-controls');
-          var oldParent = document.getElementsByClassName("leaflet-top leaflet-right")
-  
-          while (oldParent[0].childNodes.length > 0) {
-              newParent.appendChild(oldParent[0].childNodes[0]);
-          }
-   });
-
-
-   ////
-   ////HTMLScript
-   ////
-
-   var myData =  L.layerGroup([]);
-   myData.addLayer(ci_data);
-   myData.addTo(map); 
-   
-   
- //If Radio Button one is clicked.  
- document.getElementById("radioOne").addEventListener('click', function(event) {
- theExpression = 'feature.properties.Verified !== "Y" ';
- console.log(theExpression);	
-   
-   myData.clearLayers();
-   map.removeLayer(myData);
-   
-   ci_data = L.geoJson(null, {
-
-     pointToLayer: function(feature, latlng) {
-
-       return L.circleMarker(latlng, {
-         color:'black',
-         fillColor:  'red',
-         fillOpacity: 1,
-         radius: 8
-       })
-     },  
-     onEachFeature: function (feature, layer) {
-       layer.bindPopup(feature.properties.Verified);
-     },
-     filter: function(feature, layer) {   
-        return (feature.properties.Verified !== "Y" );
-     },
-
-   });
-   
-   
-   $.getJSON(url, function(data) {
-        Shooting.addData(data);
-   });
-
-     myData.addLayer(Shooting);
-     myData.addTo(map);;
-   });
- 
- */
