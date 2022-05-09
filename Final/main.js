@@ -41,26 +41,13 @@ document.body.addEventListener('click', function (event) {
 
 
 //CONTROL LAYERS
-/* 
- let controlLayers;
-controlLayers = L.control.layers( null, null, null, null, {
-position: "topright",
-collapsed: true,
-}).addTo(myMap);
-//CONTROL HIDDEN
-//$('.leaflet-control-layers').hide();
-   */
-
-// new code here -- changed just for debugging purposes
 let controlLayers;
 controlLayers = L.control.layers( null, null, {
 position: "topright",
 collapsed: false,
 }).addTo(myMap);
 //CONTROL HIDDEN
-// I commented it this out so I could observe button behavior easier
-// you could reinstate after debugging
-// $('.leaflet-control-layers').hide();
+ $('.leaflet-control-layers').hide();
 
 
 
