@@ -14,6 +14,7 @@ let MSOL;
 let MMOL;
 
 
+
 /* var MassButton = document.getElementById("MassButton");
 var MassMarkers = {};
 var Marker;
@@ -41,11 +42,11 @@ document.body.addEventListener('click', function (event) {
 
 
 //CONTROL LAYERS
-let controlLayers;
+/* let controlLayers;
 controlLayers = L.control.layers( null, null, {
 position: "topright",
 collapsed: false,
-}).addTo(myMap);
+}).addTo(myMap); */
 //CONTROL HIDDEN
 // $('.leaflet-control-layers').hide();
 
@@ -123,7 +124,7 @@ const Shooting = $.getJSON("Shooting.geojson", function(data){
       }
   }).addTo(myMap);
  // overlay1
-controlLayers.addOverlay(SOL, "All Shootings");
+//controlLayers.addOverlay(SOL, "All Shootings");
 });
 
 
@@ -137,7 +138,7 @@ const ShootingM = $.getJSON("ShootingM.geojson", function(data){
       }
   }).addTo(myMap);
  // overlay2
-controlLayers.addOverlay(MOL, "Murder Shootings");
+//controlLayers.addOverlay(MOL, "Murder Shootings");
 });
 
 //MASS
@@ -149,7 +150,7 @@ const MassShooting = $.getJSON("ShootingMass.geojson", function(data){
         }
     }).addTo(myMap);
    // overlay3
-  controlLayers.addOverlay(MSOL, "Mass Shootings");
+ // controlLayers.addOverlay(MSOL, "Mass Shootings");
   });
  
  // MASSM
@@ -161,7 +162,7 @@ const MassShootingM = $.getJSON("ShootingMassM.geojson", function(data){
         }
     }).addTo(myMap);
    // overlay4
-  controlLayers.addOverlay(MMOL, "Mass Shootings w Murder");
+  //controlLayers.addOverlay(MMOL, "Mass Shootings w Murder");
   });
 
 //TOGGLE LAYERS
@@ -222,4 +223,20 @@ function ToggleLayer () {
   };
 //  alert(MassOnly);
 //  alert(MurderOnly);
+/* 
+layerGroup = L.layerGroup([SOL,MMOL]);
+var sliderControl = L.control.sliderControl({position: "topleft", layer:layerGroup});
+map.addControl(sliderControl);
+sliderControl.startSlider();
+//sliderControl = L.control.sliderControl({position: "topright", layer: testlayer, range: true});
+ */
+let sliderControl = L.control.sliderControl({position: "topleft", layer: MMOL, range: true, 
+    timeAttribute: "CREATED_DATE"});
 
+/*     var sliderControl = L.control.sliderControl({
+      layer: MMOL,
+      follow: true,
+      range: true
+ });
+ map.addControl(sliderControl);
+ sliderControl.startSlider(); */
